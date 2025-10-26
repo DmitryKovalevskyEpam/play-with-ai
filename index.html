@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тетрис</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-wrapper">
+            <div class="left-panel">
+                <h1>ТЕТРИС</h1>
+                <div class="score-board">
+                    <div class="score-item">
+                        <h3>Очки</h3>
+                        <div id="score">0</div>
+                    </div>
+                    <div class="score-item">
+                        <h3>Линии</h3>
+                        <div id="lines">0</div>
+                    </div>
+                    <div class="score-item">
+                        <h3>Уровень</h3>
+                        <div id="level">1</div>
+                    </div>
+                </div>
+                <div class="next-piece">
+                    <h3>Следующая</h3>
+                    <canvas id="nextCanvas" width="120" height="120"></canvas>
+                </div>
+                <div class="controls">
+                    <button id="pauseBtn">Пауза</button>
+                    <button id="restartBtn">Новая игра</button>
+                </div>
+            </div>
+            
+            <div class="game-area">
+                <canvas id="gameCanvas" width="300" height="600"></canvas>
+                <div id="gameOver" class="game-over">
+                    <h2>ИГРА ОКОНЧЕНА</h2>
+                    <p>Нажмите "Новая игра"</p>
+                </div>
+            </div>
+            
+            <div class="right-panel">
+                <div class="instructions">
+                    <h3>Управление</h3>
+                    <div class="keys">
+                        <div class="key-item">
+                            <span class="key">A</span> / <span class="key">←</span> - Влево
+                        </div>
+                        <div class="key-item">
+                            <span class="key">D</span> / <span class="key">→</span> - Вправо
+                        </div>
+                        <div class="key-item">
+                            <span class="key">S</span> / <span class="key">↓</span> - Вниз
+                        </div>
+                        <div class="key-item">
+                            <span class="key">W</span> / <span class="key">↑</span> - Поворот
+                        </div>
+                        <div class="key-item">
+                            <span class="key">Space</span> - Быстро вниз
+                        </div>
+                        <div class="key-item">
+                            <span class="key">P</span> - Пауза
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
