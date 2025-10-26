@@ -1,51 +1,73 @@
 import { useState } from 'react'
 import './App.css'
+import { createTodo, isValidTodo } from './types/Todo.js'
 
+/**
+ * Основной компонент Todo приложения
+ * @returns {JSX.Element} React компонент
+ */
 function App() {
   // Моковые данные для todo элементов
+  /** @type {Todo[]} */
   const initialTodos = [
-    { id: 1, title: 'Изучить React', completed: false },
-    { id: 2, title: 'Создать todo приложение', completed: true },
-    { id: 3, title: 'Добавить фильтрацию', completed: false },
-    { id: 4, title: 'Стилизовать интерфейс', completed: false },
-    { id: 5, title: 'Протестировать функциональность', completed: false }
+    createTodo(1, 'Изучить React', false),
+    createTodo(2, 'Создать todo приложение', true),
+    createTodo(3, 'Добавить фильтрацию', false),
+    createTodo(4, 'Стилизовать интерфейс', false),
+    createTodo(5, 'Протестировать функциональность', false)
   ]
 
+  /** @type {[Todo[], function]} */
   const [todos, setTodos] = useState(initialTodos)
+  /** @type {[string, function]} */
   const [newTodo, setNewTodo] = useState('')
+  /** @type {[string, function]} */
   const [filter, setFilter] = useState('all') // all, active, completed
 
-  // Добавление нового todo
+  /**
+   * Добавляет новую задачу в список
+   * @returns {void}
+   */
   const addTodo = () => {
     if (newTodo.trim()) {
-      const todo = {
-        id: Date.now(),
-        title: newTodo.trim(),
-        completed: false
-      }
+      const todo = createTodo(Date.now(), newTodo.trim(), false)
       setTodos([...todos, todo])
       setNewTodo('')
     }
   }
 
-  // Переключение статуса todo
+  /**
+   * Переключает статус выполнения задачи
+   * @param {number} id - ID задачи
+   * @returns {void}
+   */
   const toggleTodo = (id) => {
     setTodos(todos.map(todo => 
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ))
   }
 
-  // Удаление todo
+  /**
+   * Удаляет задачу по ID
+   * @param {number} id - ID задачи для удаления
+   * @returns {void}
+   */
   const deleteTodo = (id) => {
     setTodos(todos.filter(todo => todo.id !== id))
   }
 
-  // Удаление всех завершенных задач
+  /**
+   * Удаляет все завершенные задачи
+   * @returns {void}
+   */
   const deleteCompletedTodos = () => {
     setTodos(todos.filter(todo => !todo.completed))
   }
 
-  // Фильтрация todo
+  /**
+   * Фильтрует задачи по статусу
+   * @returns {Todo[]} Отфильтрованный массив задач
+   */
   const filteredTodos = todos.filter(todo => {
     if (filter === 'active') return !todo.completed
     if (filter === 'completed') return todo.completed
@@ -62,8 +84,8 @@ function App() {
           <input
             type="text"
             value={newTodo}
-            onChange={(e) => setNewTodo(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && addTodo()}
+            onChange={(/** @type {React.ChangeEvent<HTMLInputElement>} */ e) => setNewTodo(e.target.value)}
+            onKeyPress={(/** @type {React.KeyboardEvent<HTMLInputElement>} */ e) => e.key === 'Enter' && addTodo()}
             placeholder="Добавить новую задачу..."
             className="todo-input"
           />
@@ -76,19 +98,19 @@ function App() {
         <div className="filters">
           <button 
             className={filter === 'all' ? 'filter-btn active' : 'filter-btn'}
-            onClick={() => setFilter('all')}
+            onClick={(/** @type {React.MouseEvent<HTMLButtonElement>} */ e) => setFilter('all')}
           >
             Все ({todos.length})
           </button>
           <button 
             className={filter === 'active' ? 'filter-btn active' : 'filter-btn'}
-            onClick={() => setFilter('active')}
+            onClick={(/** @type {React.MouseEvent<HTMLButtonElement>} */ e) => setFilter('active')}
           >
             Активные ({todos.filter(t => !t.completed).length})
           </button>
           <button 
             className={filter === 'completed' ? 'filter-btn active' : 'filter-btn'}
-            onClick={() => setFilter('completed')}
+            onClick={(/** @type {React.MouseEvent<HTMLButtonElement>} */ e) => setFilter('completed')}
           >
             Завершенные ({todos.filter(t => t.completed).length})
           </button>
@@ -117,12 +139,12 @@ function App() {
                 <input
                   type="checkbox"
                   checked={todo.completed}
-                  onChange={() => toggleTodo(todo.id)}
+                  onChange={(/** @type {React.ChangeEvent<HTMLInputElement>} */ e) => toggleTodo(todo.id)}
                   className="todo-checkbox"
                 />
                 <span className="todo-title">{todo.title}</span>
                 <button 
-                  onClick={() => deleteTodo(todo.id)}
+                  onClick={(/** @type {React.MouseEvent<HTMLButtonElement>} */ e) => deleteTodo(todo.id)}
                   className="delete-button"
                   title="Удалить задачу"
                 >
