@@ -35,6 +35,16 @@ function App() {
     ))
   }
 
+  // Удаление todo
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
+
+  // Удаление всех завершенных задач
+  const deleteCompletedTodos = () => {
+    setTodos(todos.filter(todo => !todo.completed))
+  }
+
   // Фильтрация todo
   const filteredTodos = todos.filter(todo => {
     if (filter === 'active') return !todo.completed
@@ -82,6 +92,15 @@ function App() {
           >
             Завершенные ({todos.filter(t => t.completed).length})
           </button>
+          {todos.filter(t => t.completed).length > 0 && (
+            <button 
+              className="clear-completed-btn"
+              onClick={deleteCompletedTodos}
+              title="Удалить все завершенные задачи"
+            >
+              Очистить завершенные
+            </button>
+          )}
         </div>
 
         {/* Список todo */}
@@ -102,6 +121,13 @@ function App() {
                   className="todo-checkbox"
                 />
                 <span className="todo-title">{todo.title}</span>
+                <button 
+                  onClick={() => deleteTodo(todo.id)}
+                  className="delete-button"
+                  title="Удалить задачу"
+                >
+                  ×
+                </button>
               </div>
             ))
           )}

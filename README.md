@@ -111,7 +111,7 @@ This approach gives you a modern, fast React development environment with minima
 Open Settings (Ctrl+Shift+J) -> Indexing & Docs -> Codebase indexing
 
 
-### Prompt
+### 1. Prompt 
 ```
 Создай мне из этого проекта todo приложение, где каждый элемент todo будет иметь свойства: title, completed, id. Нужно добавить возможность
 добавлять новые элементы и фильтровать их. Для примера добавть 5 моковых элементов
@@ -199,3 +199,5 @@ Open Settings (Ctrl+Shift+J) -> Indexing & Docs -> Codebase indexing
 ```sh
 cd my-react-app && npm run dev
 ```
+
+## Review Changes
