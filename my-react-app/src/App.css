@@ -156,6 +156,37 @@ h1 {
   color: #6c757d;
 }
 
+.delete-button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  margin-left: 10px;
+}
+
+.todo-item:hover .delete-button {
+  opacity: 1;
+}
+
+.delete-button:hover {
+  background: #ff5252;
+  transform: scale(1.1);
+}
+
+.delete-button:active {
+  transform: scale(0.95);
+}
+
 .empty-message {
   text-align: center;
   color: #6c757d;

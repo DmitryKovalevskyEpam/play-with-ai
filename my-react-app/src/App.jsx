@@ -1,24 +1,28 @@
 import { useState } from 'react'
 import './App.css'
 
-
-
+/**
+ * @typedef {Object} Todo
+ * @property {number} id - Unique identifier for the todo item
+ * @property {string} title - The title/text of the todo item
+ * @property {boolean} completed - Whether the todo item is completed or not
+ */
 
 function App() {
-  // Моковые данные для todo элементов
+  // Mock data for todo items with 5 initial todos
   const initialTodos = [
-    { id: 1, title: 'Изучить React', completed: false, date: new Date() },
-    { id: 2, title: 'Создать todo приложение', completed: true, date: new Date() },
-    { id: 3, title: 'Добавить фильтрацию', completed: false, date: new Date() },
-    { id: 4, title: 'Стилизовать интерфейс', completed: false, date: new Date() },
-    { id: 5, title: 'Протестировать функциональность', completed: false, date: new Date()  }
+    { id: 1, title: 'Learn React', completed: false },
+    { id: 2, title: 'Build Todo App', completed: true },
+    { id: 3, title: 'Add Filter Functionality', completed: false },
+    { id: 4, title: 'Style the Interface', completed: false },
+    { id: 5, title: 'Test All Features', completed: false }
   ]
 
   const [todos, setTodos] = useState(initialTodos)
   const [newTodo, setNewTodo] = useState('')
   const [filter, setFilter] = useState('all') // all, active, completed
 
-  // Добавление нового todo
+  // Add new todo
   const addTodo = () => {
     if (newTodo.trim()) {
       const todo = {
@@ -31,14 +35,19 @@ function App() {
     }
   }
 
-  // Переключение статуса todo
+  // Toggle todo completion status
   const toggleTodo = (id) => {
     setTodos(todos.map(todo => 
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ))
   }
 
-  // Фильтрация todo
+  // Delete todo
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
+
+  // Filter todos
   const filteredTodos = todos.filter(todo => {
     if (filter === 'active') return !todo.completed
     if (filter === 'completed') return todo.completed
@@ -50,50 +59,50 @@ function App() {
       <div className="container">
         <h1>Todo App</h1>
         
-        {/* Форма добавления нового todo */}
+        {/* Add new todo form */}
         <div className="add-todo">
           <input
             type="text"
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && addTodo()}
-            placeholder="Добавить новую задачу..."
+            placeholder="Add a new task..."
             className="todo-input"
           />
           <button onClick={addTodo} className="add-button">
-            Добавить
+            Add
           </button>
         </div>
 
-        {/* Фильтры */}
+        {/* Filters */}
         <div className="filters">
           <button 
             className={filter === 'all' ? 'filter-btn active' : 'filter-btn'}
             onClick={() => setFilter('all')}
           >
-            Все ({todos.length})
+            All ({todos.length})
           </button>
           <button 
             className={filter === 'active' ? 'filter-btn active' : 'filter-btn'}
             onClick={() => setFilter('active')}
           >
-            Активные ({todos.filter(t => !t.completed).length})
+            Active ({todos.filter(t => !t.completed).length})
           </button>
           <button 
             className={filter === 'completed' ? 'filter-btn active' : 'filter-btn'}
             onClick={() => setFilter('completed')}
           >
-            Завершенные ({todos.filter(t => t.completed).length})
+            Completed ({todos.filter(t => t.completed).length})
           </button>
         </div>
 
-        {/* Список todo */}
+        {/* Todo list */}
         <div className="todo-list">
           {filteredTodos.length === 0 ? (
             <p className="empty-message">
-              {filter === 'all' ? 'Нет задач' : 
-               filter === 'active' ? 'Нет активных задач' : 
-               'Нет завершенных задач'}
+              {filter === 'all' ? 'No tasks' : 
+               filter === 'active' ? 'No active tasks' : 
+               'No completed tasks'}
             </p>
           ) : (
             filteredTodos.map(todo => (
@@ -105,6 +114,13 @@ function App() {
                   className="todo-checkbox"
                 />
                 <span className="todo-title">{todo.title}</span>
+                <button 
+                  onClick={() => deleteTodo(todo.id)}
+                  className="delete-button"
+                  title="Delete task"
+                >
+                  ×
+                </button>
               </div>
             ))
           )}
