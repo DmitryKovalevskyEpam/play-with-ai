@@ -107,25 +107,6 @@ h1 {
   color: white;
 }
 
-.clear-completed-btn {
-  padding: 10px 20px;
-  border: 2px solid #ff4757;
-  background: white;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  color: #ff4757;
-}
-
-.clear-completed-btn:hover {
-  background: #ff4757;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
-}
-
 /* Список todo */
 .todo-list {
   padding: 20px;
@@ -173,38 +154,6 @@ h1 {
 .todo-item.completed .todo-title {
   text-decoration: line-through;
   color: #6c757d;
-}
-
-.delete-button {
-  background: #ff4757;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: scale(0.8);
-}
-
-.todo-item:hover .delete-button {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.delete-button:hover {
-  background: #ff3742;
-  transform: scale(1.1);
-}
-
-.delete-button:active {
-  transform: scale(0.95);
 }
 
 .empty-message {
