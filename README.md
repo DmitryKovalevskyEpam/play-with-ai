@@ -374,3 +374,20 @@ Update a todo app for me from this project, where each todo item will have the f
          if task is unclear ask clarifying questions
          Clean up unused code
          Always follow SOLID and KISS principles
+
+
+
+## The CLEAR Framework
+
+The CLEAR Framework, developed by Dr. Leo Lo of the University of New Mexico, encapsulates
+the five main components of prompt creation: Concise, Logical, Explicit, Adaptive, and
+Reflective. While these elements are not required for every prompt, a well-crafted prompt will
+include a mixture that is tailored for the specific task at hand. Each component contributes to
+guiding a model's output toward responses that align with the desired goal.
+
+## The CLEAR Framework
+Concise | "Brevity and clarity in prompts." . Keeping prompts brief and to the point will allow the AI tool to focus on the keywords of the query.
+Logical | "Structured and coherent prompts." Craft prompts that follow a logical flow and an order of ideas
+Explicit | "Clear output specifications." An explicit response allows you to clearly define your needs, and to understand the exact information or type of response you seek from the tool in question.
+Adaptive | "Flexibility and customization in prompts." Adaptability emphasizes the importance of analyzing, revising, and refining prompts based on AI-generated outputs.
+Reflectbn | "Continuous evaluation and improvement of prompts." Reflection will allow you to critically evaluate the relevance, accuracy, and completeness of the output.
