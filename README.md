@@ -1,7 +1,14 @@
-# Cursor AI: Полный гайд. Настройка, MCP, Vibe Coding, Deep Coding. 4 реальных проекта
+# UI elements
 
+# The site: Cursor AI: Полный гайд. Настройка, MCP, Vibe Coding, Deep Coding. 4 реальных проекта
 - [youtube](https://www.youtube.com/watch?v=vBEpOuTDgWc)
- 
+
+
+## Cursor Extension: 
+- Live Server
+- Open in Browser
+
+
 ## Here's a complete guide to creating a React project using `npm create vite@latest`:
 
 ## Step-by-Step Process
@@ -203,10 +210,13 @@ cd my-react-app && npm run dev
 
 
 
-### Prompt updated
+### Prompt updated (new chat!!!!)
 
 ```txt
-Создай мне из этого проекта todo приложение, где каждый элемент todo будет иметь свойства: title, completed, id. Нужно добавить возможность добавлять новые элементы и фильтровать их и удалять элементы. Для примера добавть 5 моковых элементов. Use 'export interface Toto' in JavaScript code.
+Создай мне из этого проекта todo приложение, где каждый элемент todo будет иметь свойства: title, completed, id. Нужно добавить возможность добавлять новые элементы и фильтровать их и удалять элементы. Для примера добавть 5 моковых элементов. Use 'export interface Toto' in App. of file.
+
+
+Update a todo app for me from this project, where each todo item will have the following properties: title, completed, and id. We need to add the ability to add new items, filter them, and delete items. For example, add five mock items. Use 'export interface Toto' in App.jsx of file.
 ```
 
 
@@ -322,3 +332,45 @@ cd my-react-app && npm run dev
 - ✅ **Локализованным отображением** дат
 
 Однако есть несколько технических проблем, которые нужно исправить для корректной работы приложения.
+
+
+
+
+
+
+
+
+
+
+
+
+## Cursore settings: Open Settings (Ctrl+Shift+J)
+
+1. Indexing
+   General -> Open Settings (Ctrl+Shift+J) -> Indexing & Docs -> <Codebase indexing>
+2. Privacy Mode
+   General 
+      -> Privacy -> & Privacy Mode -> <Privacy Mode>
+      ( Your data will not be trained on or used to improve the product. Code is stored to personalize your experience.)
+3. Chat -> Context -> Include Full-Folder Context -> <Disable>
+   ( Allow full contents of the selected folder to be included in the context )
+
+4. Chat ->  Auto-Run -> Auto-Run Mode -> <Ask Every Time>
+   (Choose how Agent runs tools like command execution, MCP, and file writes)
+5. Models -> 
+         claude-4.5-sonnet 62
+         gpt-5 623
+         claude-4.5-haiku 2
+         gemini-2.5-flash 2
+         gpt-40
+         deepseek-v3.1
+         code-supernova-1-million 623
+6. Rules & Memories -> Memories -> <Enable>
+   (Learn your preferences automatically based on Chats         )
+7. Rules & Memories -> User Rules (Manage your custom user rules and preferences):
+         Always answer in russian language
+         Prioritize clean, efficient and maintainable code
+         Follow best practices and design petterns appropriate for the language, framework and project
+         if task is unclear ask clarifying questions
+         Clean up unused code
+         Always follow SOLID and KISS principles
